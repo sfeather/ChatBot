@@ -1,5 +1,7 @@
 import tkinter
 import tkinter.font as font
+import speech_rec
+import webbrowser as wb
 
 
 def from_rgb(rgb):
@@ -7,11 +9,62 @@ def from_rgb(rgb):
 
 
 def respond(event=None):
-    value = "You: "
-    value = value + userText.get("1.0", tkinter.END)
+    input_string = userText.get("1.0", 'end-1c')
+    if input_string[0] == '\n':
+        input_string = input_string[1:]
+    value = "You: " + input_string + "\n"
+    keyword = input_string.split(' ', 1)[0]
+    response_text = ''
+    if any(x in keyword for x in ['YouTube', 'youtube', 'Youtube', 'yt']):
+        url = 'https://www.youtube.com/results?search_query='
+        wb.get().open_new(url + input_string.split(' ', 1)[1])
+        response_text = 'Opened a new YouTube tab searching for ' + input_string.split(' ', 1)[1]
+    if any(x in keyword for x in ['Wikipedia', 'wiki', 'wikipedia']):
+        url = 'https://en.wikipedia.org/wiki/'
+        wb.get().open_new(url + input_string.split(' ', 1)[1])
+        response_text = 'Opened a new Wikipedia tab searching for ' + input_string.split(' ', 1)[1]
+    if any(x in keyword for x in ['Google', 'google', 'search', 'Search']):
+        url = 'https://www.google.com/search?client=firefox-b-d&q='
+        wb.get().open_new(url + input_string.split(' ', 1)[1])
+        response_text = 'Opened a new Google tab searching for ' + input_string.split(' ', 1)[1]
     userText.delete('1.0', tkinter.END)
-    value = value + "ChatBot: " + "\n"
+    value = value + "ChatBot: " + response_text + "\n"
     chatText.configure(state='normal')
+    chatText.insert('end', value)
+    chatText.yview_pickplace("end")
+    chatText.configure(state='disabled')
+
+
+def speak():
+    text = userText.get("1.0", 'end-1c')
+    if text[0] == '\n':
+        text = text[1:]
+    # for Romanian, ro-RO
+    input_string = speech_rec.speak_func('en-US')
+    text = text + input_string
+    keyword = input_string.split(' ', 1)[0]
+    response_text = ''
+    if any(x in keyword for x in ['YouTube', 'youtube', 'Youtube', 'yt']):
+        url = 'https://www.youtube.com/results?search_query='
+        wb.get().open_new(url + input_string.split(' ', 1)[1])
+        response_text = 'Opened a new YouTube tab searching for ' + input_string.split(' ', 1)[1]
+    if any(x in keyword for x in ['Wikipedia', 'wiki', 'wikipedia']):
+        url = 'https://en.wikipedia.org/wiki/'
+        wb.get().open_new(url + input_string.split(' ', 1)[1])
+        response_text = 'Opened a new Wikipedia tab searching for ' + input_string.split(' ', 1)[1]
+    if any(x in keyword for x in ['Google', 'google', 'search', 'Search']):
+        url = 'https://www.google.com/search?client=firefox-b-d&q='
+        wb.get().open_new(url + input_string.split(' ', 1)[1])
+        response_text = 'Opened a new Google tab searching for ' + input_string.split(' ', 1)[1]
+    chatText.configure(state='normal')
+    if input_string == 'Sorry, we could not recognize your voice':
+        value = 'ChatBot: Sorry, I could not recognize your voice. Try again or write your message below!\n'
+        chatText.insert('end', value)
+        chatText.yview_pickplace("end")
+        chatText.configure(state='disabled')
+        return
+    value = "You: " + text + "\n" + "ChatBot: " + response_text + "\n"
+    userText.delete('1.0', tkinter.END)
     chatText.insert('end', value)
     chatText.yview_pickplace("end")
     chatText.configure(state='disabled')
@@ -68,47 +121,10 @@ userText.configure(yscrollcommand=scrollbar_user.set)
 myFont = font.Font(family='Courier', size=20, weight='bold')
 button = tkinter.Button(chatWindow, text="SEND", command=respond, background=from_rgb((19, 155, 124)),
                         font=myFont)
-button.place(x=498, y=868, height=135, width=200)
+button.place(x=498, y=868, height=135, width=100)
+
+mic_button = tkinter.Button(chatWindow, text="SPEAK", command=speak,
+                            background=from_rgb((19, 155, 124)), font=myFont)
+mic_button.place(x=597, y=869, height=135, width=100)
 
 chatWindow.mainloop()
-# from tkinter import *
-# from random import choice
-#
-# ask = ["hi", "hello"]
-# hi = ["hi", "hello"]
-# sq = ["whatsup", "kya kar rahe ho"]
-# rp = ["nothing u say", "kuch nhi ap btao"]
-# hr = ["who are you", "what is your name"]
-# rh = ["i am a chatbot created by suraj singh"]
-# emotion = ["i like you", "i love you"]
-# express = ["i like you too"]  # you can add more conversation whatever you like
-# error = ["sorry, i don't know", "what u said?", "can't recognise"]
-#
-# root = Tk()
-# user = StringVar()
-# bot = StringVar()
-#
-# root.title("SurajsBot ")
-# Label(root, text=" user : ").pack(side=LEFT)
-# Entry(root, textvariable=user).pack(side=LEFT)
-# Label(root, text=" Bot  : ").pack(side=LEFT)
-# Entry(root, textvariable=bot).pack(side=LEFT)
-#
-#
-# def main():
-#     question = user.get()
-#     if question in ask:
-#         bot.set(choice(hi))
-#     elif question in sq:
-#         bot.set(choice(rp))
-#     elif question in hr:
-#         bot.set(choice(rh))
-#     elif question in emotion:
-#         bot.set(choice(express))
-#     else:
-#         bot.set(choice(error))
-#
-#
-# Button(root, text="speak", command=main).pack(side=LEFT)
-#
-# mainloop()
