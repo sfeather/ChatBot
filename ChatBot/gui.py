@@ -46,29 +46,29 @@ tkinter.Label(chatWindow, image=img, bg=from_rgb((19, 155, 124))).grid(row=0, co
 
 # TEXT BOXES
 
-chatText = tkinter.Text(chatWindow, height=25, width=68, bg="white")
+chatText = tkinter.Text(chatWindow, height=30, width=84, bg="white")
 chatText.grid(row=1, column=0, sticky=tkinter.W)
 chatText.insert('end', "ChatBot: Hello, my name is ChatBot and I will be your assistant.\nHow can I help you?\n")
 chatText.configure(state='disabled')
 
-scrollbar_chat = tkinter.Scrollbar(chatWindow, command=chatText.yview)
-scrollbar_chat.place(x=679, y=355, height=505)
+scrollbar_chat = tkinter.Scrollbar(chatWindow, command=chatText.yview, width=17)
+scrollbar_chat.place(x=679, y=352, height=515)
 
 chatText.configure(yscrollcommand=scrollbar_chat.set)
 
-userText = tkinter.Text(chatWindow, height=6.5, width=48, bg="white")
+userText = tkinter.Text(chatWindow, height=7, width=59, bg="white")
 userText.grid(row=2, column=0, sticky=tkinter.W)
 userText.bind('<Return>', respond)
 
-scrollbar_user = tkinter.Scrollbar(chatWindow, command=userText.yview)
-scrollbar_user.place(x=484, y=858, height=143)
+scrollbar_user = tkinter.Scrollbar(chatWindow, command=userText.yview, width=17)
+scrollbar_user.place(x=478, y=868, height=130)
 
 userText.configure(yscrollcommand=scrollbar_user.set)
 
 myFont = font.Font(family='Courier', size=20, weight='bold')
 button = tkinter.Button(chatWindow, text="SEND", command=respond, background=from_rgb((19, 155, 124)),
                         font=myFont)
-button.place(x=504, y=858, height=143, width=200)
+button.place(x=498, y=868, height=135, width=200)
 
 chatWindow.mainloop()
 # from tkinter import *
