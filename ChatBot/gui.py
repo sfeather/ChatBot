@@ -1,7 +1,7 @@
 import tkinter
 import tkinter.font as font
 import speech_rec
-import webbrowser as wb
+import web_search as ws
 
 
 def from_rgb(rgb):
@@ -14,19 +14,10 @@ def respond(event=None):
         input_string = input_string[1:]
     value = "You: " + input_string + "\n"
     keyword = input_string.split(' ', 1)[0]
-    response_text = ''
-    if any(x in keyword for x in ['YouTube', 'youtube', 'Youtube', 'yt']):
-        url = 'https://www.youtube.com/results?search_query='
-        wb.get().open_new(url + input_string.split(' ', 1)[1])
-        response_text = 'Opened a new YouTube tab searching for ' + input_string.split(' ', 1)[1]
-    if any(x in keyword for x in ['Wikipedia', 'wiki', 'wikipedia']):
-        url = 'https://en.wikipedia.org/wiki/'
-        wb.get().open_new(url + input_string.split(' ', 1)[1])
-        response_text = 'Opened a new Wikipedia tab searching for ' + input_string.split(' ', 1)[1]
-    if any(x in keyword for x in ['Google', 'google', 'search', 'Search']):
-        url = 'https://www.google.com/search?client=firefox-b-d&q='
-        wb.get().open_new(url + input_string.split(' ', 1)[1])
-        response_text = 'Opened a new Google tab searching for ' + input_string.split(' ', 1)[1]
+
+    # WEB SEARCH
+    response_text = ws.search_on_web(keyword, input_string)
+
     userText.delete('1.0', tkinter.END)
     value = value + "ChatBot: " + response_text + "\n"
     chatText.configure(state='normal')
@@ -37,25 +28,14 @@ def respond(event=None):
 
 def speak():
     text = userText.get("1.0", 'end-1c')
-    if text[0] == '\n':
-        text = text[1:]
     # for Romanian, ro-RO
     input_string = speech_rec.speak_func('en-US')
     text = text + input_string
     keyword = input_string.split(' ', 1)[0]
-    response_text = ''
-    if any(x in keyword for x in ['YouTube', 'youtube', 'Youtube', 'yt']):
-        url = 'https://www.youtube.com/results?search_query='
-        wb.get().open_new(url + input_string.split(' ', 1)[1])
-        response_text = 'Opened a new YouTube tab searching for ' + input_string.split(' ', 1)[1]
-    if any(x in keyword for x in ['Wikipedia', 'wiki', 'wikipedia']):
-        url = 'https://en.wikipedia.org/wiki/'
-        wb.get().open_new(url + input_string.split(' ', 1)[1])
-        response_text = 'Opened a new Wikipedia tab searching for ' + input_string.split(' ', 1)[1]
-    if any(x in keyword for x in ['Google', 'google', 'search', 'Search']):
-        url = 'https://www.google.com/search?client=firefox-b-d&q='
-        wb.get().open_new(url + input_string.split(' ', 1)[1])
-        response_text = 'Opened a new Google tab searching for ' + input_string.split(' ', 1)[1]
+
+    # WEB SEARCH
+    response_text = ws.search_on_web(keyword, input_string)
+
     chatText.configure(state='normal')
     if input_string == 'Sorry, we could not recognize your voice':
         value = 'ChatBot: Sorry, I could not recognize your voice. Try again or write your message below!\n'
