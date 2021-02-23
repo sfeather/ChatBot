@@ -6,10 +6,6 @@ from tensorflow.python.framework import ops
 import random
 import json
 import pickle
-# TODO: de scos warnings de aici si de lasat doar in gui.py
-import warnings
-
-warnings.filterwarnings("ignore")
 
 stemmer = LancasterStemmer()
 
@@ -92,7 +88,7 @@ model = tflearn.DNN(net)
 try:
     model.load("Resources/model_files/model.tflearn")
 except Exception:
-    model.fit(training, output, n_epoch=1000, batch_size=8, show_metric=True)
+    model.fit(training, output, n_epoch=10000, batch_size=8, show_metric=True)
     model.save("Resources/model_files/model.tflearn")
 
 
