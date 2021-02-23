@@ -2,6 +2,7 @@ import tkinter
 import tkinter.font as font
 import speech_rec
 import web_search as ws
+import bot as botpy
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -19,6 +20,10 @@ def respond(event=None):
 
     # WEB SEARCH
     response_text = ws.search_on_web(keyword, input_string)
+
+    #BOT AI
+    if response_text == '':
+        response_text = botpy.chat(input_string)
 
     userText.delete('1.0', tkinter.END)
     value = value + "ChatBot: " + response_text + "\n"
@@ -41,6 +46,10 @@ def speak():
 
     # WEB SEARCH
     response_text = ws.search_on_web(keyword, input_string)
+
+    # BOT AI
+    if response_text == '':
+        response_text = botpy.chat(input_string)
 
     if input_string == 'Sorry, we could not recognize your voice':
         value = 'ChatBot: Sorry, I could not recognize your voice. Try again or write your message below!\n'
