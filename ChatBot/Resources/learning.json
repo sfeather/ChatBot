@@ -1,38 +1,40 @@
 {"intents": [
         {"tag": "greeting",
          "patterns": ["Hi", "Is anyone there?", "Hello", "Good day", "Whats up", "Hey there", "Are you there?"],
-         "responses": ["Hello!", "Good to see you again!", "Hi there, how can I help?"],
-         "context_set": ""
+         "responses": ["Hello!", "Good to see you again!", "Hi there, how can I help?"]
         },
         {"tag": "chatting",
          "patterns": ["How are you?", "Whats up", "How is your day?", "How's it going?"],
-         "responses": ["I'm good, thanks for asking! ", "I'm very happy today, glad to be asked!"],
-         "context_set": ""
+         "responses": ["I'm good, thanks for asking! ", "I'm very happy today, glad to be asked!"]
         },
         {"tag": "goodbye",
          "patterns": ["cya", "See you later", "Goodbye", "I am Leaving", "Have a Good day", "Bye bye", "See you soon"],
-         "responses": ["Sad to see you go :(", "Talk to you later", "Goodbye!", "Have a nice day! Goodbye"],
-         "context_set": ""
+         "responses": ["Sad to see you go :(.", "Talk to you later", "Goodbye!", "Have a nice day! Goodbye!"]
         },
         {"tag": "age",
-         "patterns": ["how old", "how old is tim", "what is your age", "how old are you", "age?"],
-         "responses": ["I am 18 years old!", "18 years young!"],
-         "context_set": ""
+         "patterns": ["how old", "how old is chatbot", "what is your age", "how old are you", "age?", "years old?"],
+         "responses": ["I was born on 23rd of February 2021, so I'm really young. This means that i have lots to learn from"]
         },
         {"tag": "name",
          "patterns": ["what is your name", "what should I call you", "whats your name?", "what do friends call you?"],
-         "responses": ["You can call me simply ChatBot.", "I'm ChatBot, your assistant!", "I'm ChatBot aka your best friend."],
-         "context_set": ""
+         "responses": ["You can call me simply ChatBot.", "I'm ChatBot, your assistant!", "I'm ChatBot aka your best friend."]
         },
         {"tag": "commands",
          "patterns": ["Id like to give you a command", "what commands can i use?", "commands", "What are the existing commands that i can use?", "show me what commands you know"],
-         "responses": ["You can use one of the following commands: youtube/google/wikipedia/covid + keyword"],
-         "context_set": ""
+         "responses": ["You can use one of the following commands: youtube/google/wikipedia/covid + keyword."]
         },
         {"tag": "hours",
          "patterns": ["when are you available", "what are your hours", "hours of operation", "when are you working", "working hours", "hours of work"],
-         "responses": ["I am here 24/7 to serve you!", "You can come here anytime you want and I'll be here!"],
-         "context_set": ""
+         "responses": ["I am here 24/7 to serve you!", "You can come here anytime you want and I'll be here!"]
+        },
+        {"tag": "jokes",
+         "patterns": ["tell me a joke", "do you know any jokes?", "please say a joke", "cheer me up with a joke, please", "can you cheer me up with a joke?",
+         "do you know anything funny?", "say something funny, please", "tell me your best joke", "tell me something funny",
+         "joke", "jokes", "funny"],
+         "responses": ["A: Knock-knock!\nB: Who's there?\nA: It's Siri\nB: Siri who?\nA: My thoughts exactly. ;)",
+                       "A: Knock-knock!\nB: Who's there?\nA: Doctor!\nB: Doctor who?\nA: No thanks, I'm not in the mood for spoilers.",
+                       "A: Are you hungry?\nB: No thanks, I just had a byte to eat.",
+                       "A: What did the man say to his dead robot?\nB: What?\nA: \"Rust in peace.\""]
         }
     ]
 }
