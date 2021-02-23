@@ -1,19 +1,48 @@
-from chatterbot import ChatBot
-from chatterbot.trainers import ListTrainer
+import nltk
+from nltk.stem.lancaster import LancasterStemmer
+import numpy
+import tflearn
+import tensorflow
+import random
+import json
+# TODO: de scos warnings de aici si de lasat doar in gui.py
+import warnings
+warnings.filterwarnings("ignore")
 
-# Create a new chat bot named Charlie
-chatbot = ChatBot('ChatBot')
 
-trainer = ListTrainer(chatbot)
+stemmer = LancasterStemmer()
 
-trainer.train([
-    "Hi, can I help you?",
-    "Sure, I'd like to book a flight to Iceland.",
-    "Your flight has been booked."
-])
+with open("Resources/learning.json") as file:
+    data = json.load(file)
 
-# Get a response to the input text 'I would like to book a flight.'
-while True:
-    request = input('You: ')
-    response = chatbot.get_response(request)
-    print('Bot: ', response)
+# print(data["intents"])
+
+# words are tokens from "patterns" strings
+words = []
+# labels is equivalent to "tags"
+labels = []
+# docs is equivalent to "patterns"
+# for this we use 2 lists called docs_a and docs_b
+# docs_p is the "pattern" and docs_t is the "tag" of the pattern
+# so that each entrance of docs_p corresponds to an entry of docs_t
+docs_p = []
+docs_t = []
+
+# Reading from .json file
+for intent in data["intents"]:
+    for pattern in intent["patterns"]:
+        tokenized_words = nltk.word_tokenize(pattern)
+        words.extend(tokenized_words)
+        docs_p.append(pattern)
+        docs_t.append(intent["tag"])
+
+    if intent["tag"] not in labels:
+        labels.append(intent["tag"])
+
+words = [stemmer.stem(w.lower()) for w in words]
+# remove all the duplicates using set and then sort the newly created list
+words = sorted(list(set(words)))
+# print(labels)
+print(words)
+# print(docs_p)
+# print(docs_t)
