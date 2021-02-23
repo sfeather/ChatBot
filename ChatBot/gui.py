@@ -2,6 +2,8 @@ import tkinter
 import tkinter.font as font
 import speech_rec
 import web_search as ws
+import warnings
+warnings.filterwarnings("ignore")
 
 
 def from_rgb(rgb):
@@ -32,6 +34,7 @@ def speak():
     # chatText.insert('end', '   --- YOU CAN NOW SPEAK ---\n')
     # chatText.yview_pickplace("end")
     # for Romanian, ro-RO
+    # for English, en-US
     input_string = speech_rec.speak_func('en-US', chatText)
     text = text + input_string
     keyword = input_string.split(' ', 1)[0]
