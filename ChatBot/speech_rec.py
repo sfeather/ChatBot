@@ -1,9 +1,10 @@
 import speech_recognition as sr
 
 
-def speak_func(lang):
+def speak_func(lang, chat):
     r = sr.Recognizer()
     with sr.Microphone(device_index=12) as source:
+        r.adjust_for_ambient_noise(source)
         print('Speak Anything: ')
         audio = r.listen(source)
         try:

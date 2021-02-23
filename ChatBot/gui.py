@@ -28,15 +28,17 @@ def respond(event=None):
 
 def speak():
     text = userText.get("1.0", 'end-1c')
+    chatText.configure(state='normal')
+    # chatText.insert('end', '   --- YOU CAN NOW SPEAK ---\n')
+    # chatText.yview_pickplace("end")
     # for Romanian, ro-RO
-    input_string = speech_rec.speak_func('en-US')
+    input_string = speech_rec.speak_func('en-US', chatText)
     text = text + input_string
     keyword = input_string.split(' ', 1)[0]
 
     # WEB SEARCH
     response_text = ws.search_on_web(keyword, input_string)
 
-    chatText.configure(state='normal')
     if input_string == 'Sorry, we could not recognize your voice':
         value = 'ChatBot: Sorry, I could not recognize your voice. Try again or write your message below!\n'
         chatText.insert('end', value)
