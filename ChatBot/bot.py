@@ -111,22 +111,17 @@ def bag_of_words(s, new_words):
     return numpy.array(new_bag)
 
 
-def chat():
-    print("Start talking w the bot! (type quit to stop)")
-    while True:
-        inp = input("You: ")
-        if inp.lower() == "quit":
-            break
+def chat(string):
+    results = model.predict([bag_of_words(string, words)])[0]
+    # get the index of the greatest value in the "results" list
+    results_index = numpy.argmax(results)
+    tag = labels[results_index]
 
-        results = model.predict([bag_of_words(inp, words)])
-        # get the index of the greatest value in the "results" list
-        results_index = numpy.argmax(results)
-        tag = labels[results_index]
+    if results[results_index] > 0.7:
         for intents in data["intents"]:
             if intents['tag'] == tag:
                 responses = intents['responses']
 
-        print(random.choice(responses))
-
-
-chat()
+        return random.choice(responses)
+    else:
+        return "I didn't understand that :( , please try again."
