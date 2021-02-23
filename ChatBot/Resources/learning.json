@@ -1,12 +1,17 @@
 {"intents": [
         {"tag": "greeting",
-         "patterns": ["Hi", "How are you", "Is anyone there?", "Hello", "Good day", "Whats up"],
+         "patterns": ["Hi", "Is anyone there?", "Hello", "Good day", "Whats up", "Hey there", "Are you there?"],
          "responses": ["Hello!", "Good to see you again!", "Hi there, how can I help?"],
          "context_set": ""
         },
+        {"tag": "chatting",
+         "patterns": ["How are you?", "Whats up", "How is your day?", "How's it going?"],
+         "responses": ["I'm good, thanks for asking! ", "I'm very happy today, glad to be asked!"],
+         "context_set": ""
+        },
         {"tag": "goodbye",
-         "patterns": ["cya", "See you later", "Goodbye", "I am Leaving", "Have a Good day"],
-         "responses": ["Sad to see you go :(", "Talk to you later", "Goodbye!"],
+         "patterns": ["cya", "See you later", "Goodbye", "I am Leaving", "Have a Good day", "Bye bye", "See you soon"],
+         "responses": ["Sad to see you go :(", "Talk to you later", "Goodbye!", "Have a nice day! Goodbye"],
          "context_set": ""
         },
         {"tag": "age",
@@ -15,18 +20,18 @@
          "context_set": ""
         },
         {"tag": "name",
-         "patterns": ["what is your name", "what should I call you", "whats your name?"],
-         "responses": ["You can call me Tim.", "I'm Tim!", "I'm Tim aka Tech With Tim."],
+         "patterns": ["what is your name", "what should I call you", "whats your name?", "what do friends call you?"],
+         "responses": ["You can call me simply ChatBot.", "I'm ChatBot, your assistant!", "I'm ChatBot aka your best friend."],
          "context_set": ""
         },
-        {"tag": "shop",
-         "patterns": ["Id like to buy something", "whats on the menu", "what do you recommend?", "could i get something to eat"],
-         "responses": ["We sell chocolate chip cookies for $2!", "Cookies are on the menu!"],
+        {"tag": "commands",
+         "patterns": ["Id like to give you a command", "what commands can i use?", "commands", "What are the existing commands that i can use?", "show me what commands you know"],
+         "responses": ["You can use one of the following commands: youtube/google/wikipedia/covid + keyword"],
          "context_set": ""
         },
         {"tag": "hours",
-         "patterns": ["when are you guys open", "what are your hours", "hours of operation"],
-         "responses": ["We are open 7am-4pm Monday-Friday!"],
+         "patterns": ["when are you available", "what are your hours", "hours of operation", "when are you working", "working hours", "hours of work"],
+         "responses": ["I am here 24/7 to serve you!", "You can come here anytime you want and I'll be here!"],
          "context_set": ""
         }
     ]
