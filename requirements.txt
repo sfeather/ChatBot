@@ -49,3 +49,5 @@ wasabi==0.8.2
 zipp==3.4.0
 bs4~=0.0.1
 beautifulsoup4~=4.9.3
+tflearn~=0.5.0
+tensorflow~=2.4.1
