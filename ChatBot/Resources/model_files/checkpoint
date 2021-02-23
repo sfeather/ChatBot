@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/fedar/student/projects/ChatBot/ChatBot/Resources/model_files/model.tflearn"
+all_model_checkpoint_paths: "/home/fedar/student/projects/ChatBot/ChatBot/Resources/model_files/model.tflearn"
