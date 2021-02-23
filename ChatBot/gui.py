@@ -3,8 +3,6 @@ import tkinter.font as font
 import speech_rec
 import web_search as ws
 import bot as botpy
-import warnings
-warnings.filterwarnings("ignore")
 
 
 def from_rgb(rgb):
