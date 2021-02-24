@@ -1,15 +1,22 @@
 {"intents": [
         {"tag": "greeting",
-         "patterns": ["Hi", "Is anyone there?", "Hello", "Good day", "Whats up", "Hey there", "Are you there?"],
+         "patterns": ["Hi", "Is anyone there?", "Hello", "Good day", "Hey there", "Are you there?", "Whats up"],
          "responses": ["Hello!", "Good to see you again!", "Hi there, how can I help?"]
         },
         {"tag": "chatting",
-         "patterns": ["How are you?", "Whats up", "How is your day?", "How's it going?"],
+         "patterns": ["How are you?", "How is your day?", "How's it going?", "How are you feeling today?",
+                     "Are you ok?", "Are you having a nice day?"],
          "responses": ["I'm good, thanks for asking! ", "I'm very happy today, glad to be asked!"]
         },
         {"tag": "goodbye",
-         "patterns": ["cya", "See you later", "Goodbye", "I am Leaving", "Have a Good day", "Bye bye", "See you soon"],
+         "patterns": ["cya", "See you later", "Goodbye", "I am Leaving", "Have a Good day", "Bye bye", "See you soon",
+                     "See you next time!"],
          "responses": ["Sad to see you go :(.", "Talk to you later", "Goodbye!", "Have a nice day! Goodbye!"]
+        },
+        {"tag": "thanking",
+         "patterns": ["thank you for your help", "thank you so much", "thank you chatbot",
+                     "thank you for helping me", "thank you"],
+         "responses": ["You're welcome!", "It was my pleasure!"]
         },
         {"tag": "age",
          "patterns": ["how old", "how old is chatbot", "what is your age", "how old are you", "age?", "years old?"],
@@ -28,7 +35,7 @@
          "responses": ["I am here 24/7 to serve you!", "You can come here anytime you want and I'll be here!"]
         },
         {"tag": "jokes",
-         "patterns": ["tell me a joke", "do you know any jokes?", "please say a joke", "cheer me up with a joke, please", "can you cheer me up with a joke?",
+         "patterns": ["tell me a joke", "do you know any jokes?", "please say a joke", "cheer me up with a joke, please",
          "do you know anything funny?", "say something funny, please", "tell me your best joke", "tell me something funny",
          "joke", "jokes", "funny"],
          "responses": ["A: Knock-knock!\nB: Who's there?\nA: It's Siri\nB: Siri who?\nA: My thoughts exactly. ;)",
