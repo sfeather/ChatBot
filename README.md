@@ -1,4 +1,4 @@
-# ChatBot
+# ChatBot - brief description
 ChatBot is a smart assistant that supports voice recognition and helps you navigate on the internet (youtube, wikipedia, google) and also answers your questions about different topics.
 
 ChatBot was created in Python using NLTK and TensorFlow for the AI and tkinter for the graphics.
