@@ -3,7 +3,8 @@ ChatBot is a smart assistant that supports voice recognition and helps you navig
 
 ChatBot was created in Python using NLTK and TensorFlow for the AI and tkinter for the graphics.
 
-KNOWN PROBLEMS!
+
+# KNOWN PROBLEMS!
 
 For the error "ModuleNotFoundError: No module named 'en_core_web_sm'" after installing spaCy:
 - In venv/lib/chatterbot/languages.py add to class "class ENG" this: ISO_639_1 = 'en_core_web_sm'
